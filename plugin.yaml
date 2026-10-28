@@ -1,0 +1,51 @@
+name: perf-hud
+version: 1.0.0
+manifest_version: 1
+kind: standalone
+description: >-
+  Live performance HUD for the Hermes desktop app: a status-bar chip with
+  core-compatible TPS, TTFT, LLM calls and cache hit rate, a statistics popover,
+  and optional 50-session local history. Observes public hooks only — no core
+  changes, and never stores prompts, responses or tool payloads.
+author: Georgios Kaukas (g3org3yo)
+license: MIT
+homepage: https://github.com/g3org3yo/hermes-perf-hud
+requires_hermes: ">=0.22.5"
+tags: [telemetry, performance, tps, desktop, hooks, observability]
+provides_tools: []
+provides_middleware: []
+provides_hooks:
+  - pre_api_request
+  - post_api_request
+  - api_request_error
+  - post_llm_call
+  - post_tool_call
+  - on_session_start
+  - on_session_end
+  - on_session_finalize
+  - on_session_delete
+config_schema:
+  chip_enabled:
+    type: bool
+    default: true
+    description: "Show the chip in the desktop status bar"
+  chip_metric:
+    type: str
+    default: "tps"
+    description: "Chip text at rest: tps | tps_ttft | calls"
+  history_enabled:
+    type: bool
+    default: true
+    description: "Keep local performance metadata for recent sessions (no content)"
+  history_max_sessions:
+    type: int
+    default: 50
+    description: "How many sessions the history file keeps"
+  poll_ms:
+    type: int
+    default: 5000
+    description: "Popover fallback poll interval when the live event bridge is quiet"
+  broadcast_min_interval_ms:
+    type: int
+    default: 400
+    description: "Minimum gap between live snapshot pushes to the desktop"

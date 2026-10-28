@@ -1,0 +1,38 @@
+# Package metadata for tooling (version, license, classifiers).
+#
+# This is a Hermes plugin, not a pip package: it is installed by placing the
+# directory at <HERMES_HOME>/plugins/perf-hud and enabling it with
+# `hermes plugins enable perf-hud`. There is no wheel to build and no runtime
+# dependency to install — the plugin imports only the standard library on the
+# Python side and the Hermes plugin SDK on the desktop side.
+
+[project]
+name = "hermes-perf-hud"
+version = "1.0.0"
+description = "Live performance HUD for the Hermes desktop app: status-bar TPS/TTFT chip, statistics popover, and local performance history"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Georgios Kaukas", email = "g3org3yo@users.noreply.github.com" }]
+keywords = ["hermes", "plugin", "telemetry", "performance", "tps", "desktop"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: System :: Monitoring",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/g3org3yo/hermes-perf-hud"
+Source = "https://github.com/g3org3yo/hermes-perf-hud"
+Changelog = "https://github.com/g3org3yo/hermes-perf-hud/blob/main/CHANGELOG.md"
+
+# No optional runtime extras: zero third-party dependencies by design.
+[project.optional-dependencies]
+dev = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

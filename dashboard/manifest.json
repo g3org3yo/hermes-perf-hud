@@ -1,0 +1,8 @@
+{
+  "name": "perf-hud",
+  "label": "Perf HUD",
+  "description": "Live TPS, TTFT, LLM calls, cache hit rate and tool time in the desktop status bar, with an optional 50-session local history.",
+  "icon": "Activity",
+  "version": "1.0.0",
+  "api": "plugin_api.py"
+}
